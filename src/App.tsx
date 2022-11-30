@@ -11,6 +11,7 @@ function App() {
     const newboard = new Board();
     newboard.initCells();
     setBoard(newboard);
+    newboard.addFigure();
   }
 
   useEffect(() => {

@@ -5,7 +5,13 @@ interface CellProps {
 }
 function CellComponents({ cell }: CellProps) {
   return (
-    <div className={`cell ${cell.color}`} />
+    <div className={`cell ${cell.color}`}>
+      {
+        cell.figure && (
+          <img src={`${cell.figure.logo}`} alt={cell.figure.name} />
+        )
+      }
+    </div>
   );
 }
 
