@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Board } from '../models/Board';
 import { Cell } from '../models/Cell';
 import CellComponents from './CellComponents';
@@ -10,15 +10,32 @@ interface BoardProps {
 }
 
 function BoardComponents({ board, setBoard }: BoardProps) {
-  console.log(setBoard);
-
   const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
 
   function click(cell: Cell) {
-    if (cell.figure) {
+    if (selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
+      selectedCell.moveFigure(cell);
+      setSelectedCell(null);
+    } else {
       setSelectedCell(cell);
     }
   }
+
+  // перерисовка доски
+  function updateBoard() {
+    const newBoard = board.getCopyBoard();
+    setBoard(newBoard);
+  }
+
+  // подсветка доступных ячеек
+  function highlightCells() {
+    board.highlightCells(selectedCell);
+    updateBoard();
+  }
+
+  useEffect(() => {
+    highlightCells();
+  }, [selectedCell]);
 
   return (
     <div className="board">

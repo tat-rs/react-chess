@@ -33,6 +33,10 @@
   position: relative;
 }
 
+.cell img:hover {
+  cursor: pointer;
+}
+
 .black {
   background-color: rgb(118, 73, 73);
 }
@@ -41,6 +45,17 @@
   background-color: rgb(185, 182, 182);
 }
 
+.cell_available {
+  background-color: #adff2f;
+}
+
 .selected {
   background-color: brown;
+}
+
+.available {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #adff2f;
 }

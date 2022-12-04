@@ -35,10 +35,22 @@ export class Figure {
   }
 
   // может ли двигаться фигура на ячейку
-  /* canMove(target: Cell): {
+  canMove(target: Cell): boolean {
+    if (target.figure?.color === this.color) {
+      return false;
+    }
+
+    if (target.figure?.name === FigureName.KING) {
+      return false;
+    }
     return true;
-  } */
+  }
 
   // перемещение фигуры
-  /* moveFigure(target: Cell) {} */
+  moveFigure(target: Cell) {
+    if (target.color === this.color) {
+      return false;
+    }
+    return true;
+  }
 }

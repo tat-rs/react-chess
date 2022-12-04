@@ -11,12 +11,19 @@ function CellComponents({ cell, selected, click }: CellProps) {
   }
   return (
     <div
-      className={`cell ${cell.color} ${selected ? 'selected' : ''}`}
+      className={
+        `cell ${cell.color}
+        ${selected ? 'selected' : ''}
+        ${cell.figure && cell.available ? 'cell_available' : ''}`
+      }
       role="button"
       tabIndex={0}
       onClick={() => clickOnCell()}
       onKeyDown={() => clickOnCell()}
     >
+      {!cell.figure && cell.available && (
+        <div className="available" />
+      )}
       {
         cell.figure && (
           <img src={`${cell.figure.logo}`} alt={cell.figure.name} />

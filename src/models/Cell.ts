@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/prefer-default-export */
 import { Board } from './Board';
@@ -29,5 +30,14 @@ export class Cell {
     this.board = board;
     this.available = false;
     this.id = Math.random();
+  }
+
+  public moveFigure(target: Cell) {
+    // target - ячейка на которую хотим сделать перемещение
+    if (this.figure && this.figure.canMove(target)) {
+      this.figure?.moveFigure(target);
+      target.figure = this.figure;
+      this.figure = null;
+    }
   }
 }
