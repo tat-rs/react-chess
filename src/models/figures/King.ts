@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/prefer-default-export */
 import { Cell } from '../Cell';
@@ -11,5 +12,24 @@ export class King extends Figure {
     super(color, cell);
     this.logo = color === Colors.BLACK ? blackLogo : whiteLogo;
     this.name = FigureName.KING;
+  }
+
+  canMove(target: Cell): boolean {
+    if (!super.canMove(target)) {
+      return false;
+    }
+
+    const isVerticalMove = (target.x === this.cell.x) && (target.y === this.cell.y + 1 || target.y === this.cell.y - 1);
+
+    const isHorizontalMove = (target.y === this.cell.y) && (target.x === this.cell.x + 1 || target.x === this.cell.x - 1);
+
+    const isDiagonalMove = (((target.y === this.cell.y - 1) && (target.x === this.cell.x + 1 || target.x === this.cell.x - 1))
+                            || ((target.y === this.cell.y + 1) && (target.x === this.cell.x + 1 || target.x === this.cell.x - 1)));
+
+    if (isVerticalMove || isHorizontalMove || isDiagonalMove) {
+      return true;
+    }
+
+    return false;
   }
 }

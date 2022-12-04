@@ -37,6 +37,13 @@ export class Cell {
     return this.figure === null;
   }
 
+  isEnemy(target: Cell) {
+    if (target.figure) {
+      return this.figure?.color === target.figure.color;
+    }
+    return false;
+  }
+
   isEmptyVertical(target: Cell): boolean {
     if (this.x !== target.x) {
       return false;
@@ -94,7 +101,7 @@ export class Cell {
   public moveFigure(target: Cell) {
     // target - ячейка на которую хотим сделать перемещение
     if (this.figure && this.figure.canMove(target)) {
-      /* this.figure?.moveFigure(target); */
+      this.figure?.moveFigure();
       target.setFigure(this.figure);
       this.figure = null;
     }

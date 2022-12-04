@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable class-methods-use-this */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/prefer-default-export */
 import logoIcon from '../../assets/black-king.png';
@@ -40,17 +42,15 @@ export class Figure {
       return false;
     }
 
-    if (target.figure?.name === FigureName.KING) {
+    if (target.figure?.name === FigureName.KING
+      && target.figure?.color === this.cell.figure?.color) {
       return false;
     }
     return true;
   }
 
   // перемещение фигуры
-  /* moveFigure(target: Cell) {
-    if (target.color === this.color) {
-      return false;
-    }
-    return true;
-  } */
+  moveFigure() {
+
+  }
 }
