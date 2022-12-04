@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import BoardComponents from './components/BoardComponents';
+import LostFigures from './components/LostFigures';
 import { Board } from './models/Board';
 import { Colors } from './models/Colors';
 import { Player } from './models/Player';
@@ -30,13 +31,20 @@ function App() {
 
   return (
     <div className="app">
-      <p>{`Текущий ход: ${currentPlayer?.color === Colors.WHITE ? 'первый' : 'второй'} игрок`}</p>
-      <BoardComponents
-        board={board}
-        setBoard={setBoard}
-        swapPlayer={() => swapPayer()}
-        currentPlayer={currentPlayer}
-      />
+      <div className="main">
+        <p className="main__title">{`Текущий ход: ${currentPlayer?.color === Colors.WHITE ? 'первый' : 'второй'} игрок`}</p>
+        <BoardComponents
+          board={board}
+          setBoard={setBoard}
+          swapPlayer={() => swapPayer()}
+          currentPlayer={currentPlayer}
+        />
+      </div>
+
+      <div className="lost">
+        <LostFigures title="Белые фигуры" figures={board.lostWhiteFigures} />
+        <LostFigures title="Черные фигуры" figures={board.lostBlackFigures} />
+      </div>
     </div>
   );
 }

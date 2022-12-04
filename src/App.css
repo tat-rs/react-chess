@@ -1,3 +1,5 @@
+@import url(./vendor/normalize.css);
+
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +9,16 @@
   min-width: 100vw;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  padding: 50px;
+  gap: 50px;
+  padding: 30px;
+  background-color: rgb(199, 196, 196);
+}
+
+.main__title {
+  margin: 0 0 25px 0;
+  font-size: 22px;
 }
 
 .board {
@@ -40,11 +47,11 @@
 }
 
 .black {
-  background-color: rgb(118, 73, 73);
+  background-color: rgb(18, 67, 119);
 }
 
 .white {
-  background-color: rgb(185, 182, 182);
+  background-color: rgb(168, 215, 220);
 }
 
 .cell_available {
@@ -60,4 +67,45 @@
   height: 12px;
   border-radius: 50%;
   background-color: #adff2f;
+}
+
+.lost {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lost__container {
+  height: calc(50vh - 60px);
+  padding: 30px;
+}
+
+.lost__title {
+  margin: 0 0 10px 0;
+  font-size: 22px;
+}
+
+.lost__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.lost__item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.lost__subtitle {
+  margin: 0;
+  font-size: 16px;
+}
+
+.lost__image {
+  display: block;
+  width: 16px;
+  height: 16px;
 }

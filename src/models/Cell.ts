@@ -98,9 +98,20 @@ export class Cell {
     this.figure.cell = this;
   }
 
+  addLostFigure(figure: Figure) {
+    if (figure.color === Colors.WHITE) {
+      this.board.lostWhiteFigures.push(figure);
+    } else {
+      this.board.lostBlackFigures.push(figure);
+    }
+  }
+
   public moveFigure(target: Cell) {
     // target - ячейка на которую хотим сделать перемещение
     if (this.figure && this.figure.canMove(target)) {
+      if (target.figure) {
+        this.addLostFigure(target.figure);
+      }
       this.figure?.moveFigure();
       target.setFigure(this.figure);
       this.figure = null;

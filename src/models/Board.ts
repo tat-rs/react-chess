@@ -4,6 +4,7 @@
 import { Cell } from './Cell';
 import { Colors } from './Colors';
 import { Bishop } from './figures/Bishop';
+import { Figure } from './figures/Figure';
 import { King } from './figures/King';
 import { Knight } from './figures/Knight';
 import { Pawn } from './figures/Pawn';
@@ -13,6 +14,10 @@ import { Rook } from './figures/Rook';
 /* eslint-disable import/prefer-default-export */
 export class Board {
   cells: Cell[][] = [] // двумерный массив - матрица
+
+  lostWhiteFigures: Figure[] = []
+
+  lostBlackFigures: Figure[] = []
 
   public initCells() {
     // !!!!Рекрусивнная зависимость, подумать о другой реализации
@@ -33,6 +38,8 @@ export class Board {
 
   public getCopyBoard(): Board {
     const newBoard = new Board();
+    newBoard.lostBlackFigures = this.lostBlackFigures;
+    newBoard.lostWhiteFigures = this.lostWhiteFigures;
     newBoard.cells = this.cells;
     return newBoard;
   }
