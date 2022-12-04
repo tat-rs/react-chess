@@ -61,10 +61,8 @@ export class Board {
   }
 
   private addKing() {
-    /* new King(Colors.BLACK, this.getCell(4, 0));
-    new King(Colors.WHITE, this.getCell(4, 7)); */
-    new King(Colors.BLACK, this.getCell(4, 4));
-    new King(Colors.WHITE, this.getCell(2, 4));
+    new King(Colors.BLACK, this.getCell(4, 0));
+    new King(Colors.WHITE, this.getCell(4, 7));
   }
 
   private addQueen() {
