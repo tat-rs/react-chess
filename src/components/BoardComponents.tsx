@@ -1,6 +1,7 @@
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React, { useState } from 'react';
 import { Board } from '../models/Board';
+import { Cell } from '../models/Cell';
 import CellComponents from './CellComponents';
 
 interface BoardProps {
@@ -10,6 +11,15 @@ interface BoardProps {
 
 function BoardComponents({ board, setBoard }: BoardProps) {
   console.log(setBoard);
+
+  const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
+
+  function click(cell: Cell) {
+    if (cell.figure) {
+      setSelectedCell(cell);
+    }
+  }
+
   return (
     <div className="board">
       {
@@ -17,7 +27,12 @@ function BoardComponents({ board, setBoard }: BoardProps) {
         <React.Fragment key={index}>
           {
             row.map((cell) => (
-              <CellComponents cell={cell} key={cell.id} />
+              <CellComponents
+                click={(select) => click(select)}
+                cell={cell}
+                key={cell.id}
+                selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
+              />
             ))
           }
         </React.Fragment>

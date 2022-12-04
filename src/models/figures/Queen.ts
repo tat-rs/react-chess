@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/prefer-default-export */
 import { Cell } from '../Cell';
 import { Colors } from '../Colors';
