@@ -47,10 +47,10 @@ export class Figure {
   }
 
   // перемещение фигуры
-  moveFigure(target: Cell) {
+  /* moveFigure(target: Cell) {
     if (target.color === this.color) {
       return false;
     }
     return true;
-  }
+  } */
 }
